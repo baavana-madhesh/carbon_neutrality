@@ -1,0 +1,222 @@
+:root {
+  --bg-1: #f6fbfc;
+  --bg-2: #eef7f5;
+  --surface: #ffffff;
+  --text: #22343a;
+  --muted: #6b7c84;
+  --accent: #4db6ac;
+  /* mild teal */
+  --accent-2: #6ecfbd;
+  --radius: 12px;
+  --card-radius: 16px;
+  --shadow-1: 0 6px 18px rgba(20, 30, 34, 0.06);
+  --shadow-2: 0 12px 30px rgba(20, 30, 34, 0.08);
+  --transition: 300ms cubic-bezier(.22, .9, .35, 1);
+}
+
+/* Reset + base */
+* {
+  box-sizing: border-box
+}
+
+html,
+body,
+#root {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--transition);
+}
+
+/* Smooth utility animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes floatLift {
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-6px)
+  }
+
+  100% {
+    transform: translateY(0)
+  }
+}
+
+.fade-in {
+  animation: fadeUp 420ms var(--transition) both;
+}
+
+.float {
+  animation: floatLift 4s ease-in-out infinite;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-1);
+  transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid rgba(34, 52, 58, 0.04);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2);
+}
+
+.dashboard-card {
+  overflow: hidden
+}
+
+.card .card-title {
+  color: var(--text);
+  font-weight: 600
+}
+
+.card .card-text {
+  color: var(--muted)
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(34, 52, 58, 0.04);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.navbar .navbar-brand {
+  color: var(--text) !important;
+  font-weight: 700
+}
+
+.navbar .nav-link {
+  color: var(--muted) !important;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  transition: color var(--transition);
+}
+
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  bottom: 6px;
+  height: 3px;
+  width: 36%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 4px;
+  transition: transform var(--transition);
+}
+
+.navbar .nav-link:hover {
+  color: var(--text) !important
+}
+
+.navbar .nav-link.active::after {
+  transform: translateX(-50%) scaleX(1)
+}
+
+/* Buttons */
+.btn {
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.btn-animated {
+  box-shadow: 0 6px 18px rgba(77, 182, 172, 0.12);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(77, 182, 172, 0.14);
+}
+
+.btn-outline-danger {
+  border-radius: 10px
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid rgba(34, 52, 58, 0.08);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(77, 182, 172, 0.08);
+  border-color: var(--accent);
+}
+
+.animated-input {
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.animated-input:focus {
+  transform: translateY(-2px)
+}
+
+/* Tables */
+.table {
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden
+}
+
+.table thead {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white
+}
+
+.table tbody tr:hover {
+  background: rgba(77, 182, 172, 0.03)
+}
+
+/* Headings */
+h2,
+h5 {
+  color: var(--text)
+}
+
+/* Responsive */
+@media (max-width:768px) {
+  .card {
+    width: 95% !important;
+    margin: 10px auto
+  }
+
+  .navbar-nav {
+    text-align: center
+  }
+}
