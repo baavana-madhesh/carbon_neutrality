@@ -12,6 +12,7 @@ import HistoricalRecords from "./pages/HistoricalRecords";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ChatWidget from "./components/ChatWidget";
 
 function NavbarVisibility() {
   const location = useLocation();
@@ -52,6 +53,7 @@ function App() {
           }
         />{" "}
       </Routes>{" "}
+      <ChatWidget />
     </Router>
   );
 }

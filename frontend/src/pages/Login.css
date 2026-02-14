@@ -1,0 +1,37 @@
+/* Whole page background (matches image tone) */
+.login-container {
+  height: 100vh;
+  background: linear-gradient(135deg, #e8f5e9, #f1f8f4);
+  perspective: 1200px; /* 🔥 for strong 3D */
+}
+
+/* Login card */
+.login-card {
+  width: 420px;
+  min-height: 480px; /* ✅ increased length/height */
+  background: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* Full rotate effect */
+.login-card:hover {
+  transform: rotateY(15deg) rotateX(10deg) scale(1.05);
+  box-shadow: 0 50px 80px rgba(0, 0, 0, 0.25);
+}
+
+/* Inputs */
+.login-card input {
+  border-radius: 12px;
+  padding: 10px;
+}
+
+/* Right image: not full, center-right, blends */
+.login-image {
+  max-width: 85%;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* helps blend white bg */
+}
