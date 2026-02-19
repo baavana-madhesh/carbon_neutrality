@@ -28,12 +28,17 @@ export default function HistoricalRecords() {
 
   // Format date as DD/MM/YYYY
   const formatDate = (dateStr) => {
-    const d = new Date(dateStr);
-    const day = String(d.getDate()).padStart(2, "0");
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const year = d.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
+  if (!dateStr) return "-";
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return "-";
+
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const year = d.getFullYear();
+
+  return `${day}/${month}/${year}`;
+};
+
 
   // Filter records by month/year
   const filteredRecords = records.filter((r) => {
@@ -77,7 +82,7 @@ export default function HistoricalRecords() {
     dataToDownload.forEach((r) => {
       r.sources.forEach((s) => {
         csvRows.push([
-          formatDate(r.date),
+          formatDate(r.createdAt),
           r.month,
           r.year,
           r.campusBlock,

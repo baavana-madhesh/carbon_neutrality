@@ -10,6 +10,7 @@ router.post("/add", auth, async (req, res) => {
       campusBlock,
       month,
       year,
+      date,      // ✅ get date from frontend
       sources,
       remarks
     } = req.body;
@@ -31,6 +32,7 @@ router.post("/add", auth, async (req, res) => {
       campusBlock,
       month,
       year,
+      date,        // ✅ save date
       sources,
       totalEmission,
       totalAbsorption,
@@ -40,6 +42,7 @@ router.post("/add", auth, async (req, res) => {
     });
 
     await entry.save();
+
     res.json({
       message: "Carbon data added successfully",
       entry
@@ -58,11 +61,11 @@ router.get("/history", auth, async (req, res) => {
     const entries = await CarbonEntry.find({
       createdBy: req.user.id
     }).sort({
-      createdAt: -1
+      date: -1   // sort by selected date
     });
-    res.json({
-      entries
-    });
+
+    res.json({ entries });
+
   } catch (err) {
     res.status(500).json({
       error: err.message

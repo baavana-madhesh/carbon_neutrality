@@ -4,7 +4,6 @@
   background: linear-gradient(135deg, #e8f5e9, #f1f8f4);
   perspective: 1200px; /* 🔥 for strong 3D */
 }
-
 /* Login card */
 .login-card {
   width: 420px;
