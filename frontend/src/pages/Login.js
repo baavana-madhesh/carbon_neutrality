@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import netzero from "../assets/netzero.jpg"; // ✅ put image here
@@ -61,6 +61,9 @@ const Login = () => {
                 <button type="submit" className="btn btn-success w-100 py-2">
                   Login
                 </button>
+                <p className="mt-3 text-center">
+   Don’t have an account? <Link to="/signup">Signup</Link>
+</p>
               </form>
             </div>
           </div>
