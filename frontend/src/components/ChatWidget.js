@@ -3,8 +3,7 @@ import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const API = "http://localhost:5000"; // change later to deployed backend URL
-
+const API = process.env.REACT_APP_API_URL; 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
